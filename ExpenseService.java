@@ -15,6 +15,7 @@ public class ExpenseService {
         for(Expense expense : expenses) {
             for(Participant participant : expense.getParticipants()) {
                 if(participant.getUser().equals(user)) {
+                    expense.setTotalAmount(participant.getAmountOwed());
                     userExpenses.add(expense);
                     break;
                 }
@@ -30,6 +31,7 @@ public class ExpenseService {
 
     public void splitEqually(Expense expense) {
         double splitAmount = expense.getTotalAmount() / expense.getParticipants().size();
+        // System.out.println(splitAmount);
         for(Participant participant : expense.getParticipants()) {
             participant.setAmountOwed(splitAmount);
         }

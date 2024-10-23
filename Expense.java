@@ -19,6 +19,10 @@ public class Expense {
         return totalAmount;
     }
 
+    public void setTotalAmount(double totalAmount) {
+        this.totalAmount = totalAmount;
+    }
+
     public List<Participant> getParticipants() {
         return participants;
     }

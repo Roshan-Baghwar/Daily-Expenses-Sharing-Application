@@ -8,5 +8,9 @@ public class User {
         this.name = name;
         this.mobile = mobile;
     }
+
+    public String getName() {
+        return name;
+    }
 }
  
