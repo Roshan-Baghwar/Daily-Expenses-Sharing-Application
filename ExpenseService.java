@@ -23,4 +23,18 @@ public class ExpenseService {
     public List<Expense> getAllExpenses() {
         return expenses;
     }
+
+    public void splitEqually(Expense expense) {
+        double splitAmount = expense.getTotalAmount() / expense.getParticipants.size();
+        for(Participant participant : expense.getParticipants()) {
+            participant.setAmountOwed(splitAmount);
+        }
+    }
+
+    public void splitExact(Expense expense, Map<User, Double> exactAmounts) {
+        for(Participant participant : expense.geParticipants()) {
+            double amount = exactAmounts.get(participant.getUser());
+            participant.setAmountOwed(amount);
+        }
+    }
 }
