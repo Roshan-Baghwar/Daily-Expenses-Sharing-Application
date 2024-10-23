@@ -19,7 +19,7 @@ public class Expense {
         return totalAmount;
     }
 
-    public List<Participant> geParticipants() {
+    public List<Participant> getParticipants() {
         return participants;
     }
 }

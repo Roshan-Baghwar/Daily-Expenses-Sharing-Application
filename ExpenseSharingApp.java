@@ -1,3 +1,6 @@
+import java.util.List;
+import java.util.Arrays;
+
 public class ExpenseSharingApp {
     private static UserService userService = new UserService();
     private static ExpenseService expenseService = new ExpenseService();
