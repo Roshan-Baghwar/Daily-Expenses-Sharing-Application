@@ -1,4 +1,5 @@
 import java.util.Map;
+import java.util.HashMap;
 
 public class UserService {
     private Map<String, User> users = new HashMap<>();

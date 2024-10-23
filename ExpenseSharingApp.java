@@ -15,5 +15,11 @@ public class ExpenseSharingApp {
 
         Expense expense = new Expense("1", "Dinner", 2000, participants, ExpenseType.EQUAL);
         expenseService.addExpense(expense);
+        expenseService.splitEqually(expense);
+
+        List<Expense> roshanExpenses = expenseService.getExpensesForUser(roshan);
+        for(Expense ex : roshanExpenses) {
+            System.out.println(ex.getTotalAmount());
+        }
     }
 }

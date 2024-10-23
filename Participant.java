@@ -8,4 +8,20 @@ public class Participant {
         this.amountOwed = amountOwed;
         this.percentageOwed = percentageOwed;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public double getAmountOwed() {
+        return amountOwed;
+    }
+
+    public double getPercentageOwed() {
+        return percentageOwed;
+    }
+
+    public void setAmountOwed(double amountOwed) {
+        this.amountOwed = amountOwed;
+    }
 }

@@ -14,4 +14,12 @@ public class Expense {
         this.participants = participants;
         this.splitType = spliType;
     }
+
+    public double getTotalAmount() {
+        return totalAmount;
+    }
+
+    public List<Participant> geParticipants() {
+        return participants;
+    }
 }

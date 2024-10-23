@@ -1,4 +1,6 @@
+import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class ExpenseService {
     private List<Expense> expenses = new ArrayList<>();
@@ -18,6 +20,8 @@ public class ExpenseService {
                 }
             }
         }
+
+        return userExpenses;
     }
 
     public List<Expense> getAllExpenses() {
@@ -34,6 +38,14 @@ public class ExpenseService {
     public void splitExact(Expense expense, Map<User, Double> exactAmounts) {
         for(Participant participant : expense.geParticipants()) {
             double amount = exactAmounts.get(participant.getUser());
+            participant.setAmountOwed(amount);
+        }
+    }
+
+    public void splitByPercentage(Expense expense, Map<User, Double> percentages) {
+        for(Participant participant : expense.geParticipants()) {
+            double percentage = percentages.get(participant.getUser());
+            double amount = (percentage / 100) * expense.getTotalAmount();
             participant.setAmountOwed(amount);
         }
     }
