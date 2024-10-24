@@ -1,21 +1,32 @@
 import java.util.Map;
+import java.util.HashMap;
 
 public class SplitService {
 
-    private static DataValidation dataValidation = new DataValidation();
+    private Map<User, Double> splitMap;
+    private DataValidation dataValidation;
 
-    public void splitExpense(Expense expense, Map<User, Double> expenseMap) {
+    public SplitService() {
+        this.splitMap = new HashMap<>();
+        this.dataValidation = new DataValidation();
+    }
+
+    public void setSplitMap(Map<User, Double> splitMap) {
+        this.splitMap = splitMap;
+    }
+
+    public void splitExpense(Expense expense) {
         switch (expense.getSplitType()) {
             case EQUAL:
                         splitEqually(expense);
                         break;
 
             case EXACT:
-                        splitExact(expense, expenseMap);
+                        splitExact(expense, splitMap);
                         break;
 
             case PERCENTAGE:
-                        splitByPercentage(expense, expenseMap);
+                        splitByPercentage(expense, splitMap);
                         break;
         
             default:

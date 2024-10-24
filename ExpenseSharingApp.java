@@ -23,22 +23,36 @@ public class ExpenseSharingApp {
         Participant participant2 = new Participant(user2, 0, 0);
         List<Participant> participants = Arrays.asList(participant1, participant2);
 
-        Expense expense1 = new Expense("1", "Dinner", 2000, participants, SplitType.EQUAL);
-        Expense expense2 = new Expense("2", "Lunch", 300, participants, SplitType.PERCENTAGE);
+        Expense expense1 = new Expense("1", "Breakfast", 2000, participants, SplitType.EQUAL);
+        Expense expense2 = new Expense("2", "Lunch", 3000, participants, SplitType.PERCENTAGE);
+        Expense expense3 = new Expense("3", "Dinner", 5000, participants, SplitType.EXACT);
+
         expenseService.addExpense(expense1); 
         expenseService.addExpense(expense2);
+        expenseService.addExpense(expense3);
 
-        Map<User, Double> expenseMap = new HashMap<>();
-        expenseMap.put(user1, 75.0);
-        expenseMap.put(user2, 25.0);
-
-        splitService.splitExpense(expense1, expenseMap);
+        splitService.splitExpense(expense1);
         balanceSheet.showBalanceSheet(expense1);
 
-        splitService.splitExpense(expense2, expenseMap);
+
+        Map<User, Double> percentageSplitMap = new HashMap<>();
+        percentageSplitMap.put(user1, 75.0);
+        percentageSplitMap.put(user2, 25.0);
+
+        splitService.setSplitMap(percentageSplitMap);
+        splitService.splitExpense(expense2);
         balanceSheet.showBalanceSheet(expense2);
 
-        balanceSheetGenerator.getBalanceSheet(Arrays.asList(expense1, expense2), fileName);
+        Map<User, Double> exactSplitMap = new HashMap<>();
+        exactSplitMap.put(user1, 4500.0);
+        exactSplitMap.put(user2, 500.0);
+
+        splitService.setSplitMap(exactSplitMap);
+        splitService.splitExpense(expense3);
+        balanceSheet.showBalanceSheet(expense3);
+
+        // Un-comment this to generate Balance Sheet CSV File
+        // balanceSheetGenerator.getBalanceSheet(Arrays.asList(expense1, expense2, expense3), fileName);
 
     }
 }

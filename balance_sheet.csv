@@ -1,3 +1,4 @@
 Expense ID, Description, Total Amount, Split Type, Participants & Owed Amount
-1, Dinner, 2000.0, EQUAL, Roshan Baghwar: 225.0; Manisha Keshri: 75.0; 
-2, Lunch, 300.0, PERCENTAGE, Roshan Baghwar: 225.0; Manisha Keshri: 75.0; 
+1, Breakfast, 2000.0, EQUAL, Roshan Baghwar: 4500.0; Manisha Keshri: 500.0;
+2, Lunch, 3000.0, PERCENTAGE, Roshan Baghwar: 4500.0; Manisha Keshri: 500.0;
+3, Dinner, 5000.0, EXACT, Roshan Baghwar: 4500.0; Manisha Keshri: 500.0;

@@ -11,7 +11,7 @@ public class BalanceSheetGenerator {
 
             // Writing each expense record
             for (Expense expense : expenses) {
-                writer.append(expense.getId())
+                writer.append(expense.getId().toString())  // Convert ID to string explicitly
                         .append(", ")
                         .append(expense.getDescription())
                         .append(", ")
@@ -20,14 +20,17 @@ public class BalanceSheetGenerator {
                         .append(String.valueOf(expense.getSplitType()))
                         .append(", ");
 
+                // Writing each participant's owed amount
+                StringBuilder participantInfo = new StringBuilder();
                 for (Participant participant : expense.getParticipants()) {
-                    writer.append(participant.getUser().getName())
+                    participantInfo.append(participant.getUser().getName())
                             .append(": ")
                             .append(String.valueOf(participant.getAmountOwed()))
                             .append("; ");
                 }
-                
-                writer.append('\n');  // Newline for the next expense
+
+                writer.append(participantInfo.toString().trim())  // Avoid unnecessary spaces
+                      .append('\n');  // Newline for the next expense
             }
 
             System.out.println("CSV balance sheet generated successfully!");
