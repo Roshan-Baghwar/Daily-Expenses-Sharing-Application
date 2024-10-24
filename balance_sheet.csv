@@ -1,2 +1,3 @@
-Expense ID, Description, Total Amount, Participants & Owed Amount
-1, Dinner, 2000.0, Roshan Baghwar: 1000.0; Pranay Deep: 1000.0; 
+Expense ID, Description, Total Amount, Split Type, Participants & Owed Amount
+1, Dinner, 2000.0, EQUAL, Roshan Baghwar: 225.0; Manisha Keshri: 75.0; 
+2, Lunch, 300.0, PERCENTAGE, Roshan Baghwar: 225.0; Manisha Keshri: 75.0; 

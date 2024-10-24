@@ -1,6 +1,15 @@
 public class BalanceSheet {
+
+    public void showBalanceSheet(Expense expense) {
+        System.out.println("******************************");
+        System.out.println("Balance Sheet for " + expense.getDescription());
+        System.out.println("******************************");
+
+        showIndividualExpenses(expense);
+        showOverallExpense(expense);
+    }
     
-    public void showIndividualExpenses(Expense expense) {
+    private void showIndividualExpenses(Expense expense) {
         System.out.println("------------------------------");
         System.out.println("Showing INDIVIDUAL Expenses");
         System.out.println("------------------------------");
@@ -11,10 +20,11 @@ public class BalanceSheet {
         }
     }
 
-    public void showOverallExpense(Expense expense) {
+    private void showOverallExpense(Expense expense) {
         System.out.println("------------------------------");
         System.out.println("Showing OVERALL Expenses");
         System.out.println("------------------------------");
         System.out.println("Total Amount: \t" + expense.getTotalAmount());
+        System.out.println();
     }
 }

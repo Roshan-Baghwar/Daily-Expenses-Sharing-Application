@@ -7,7 +7,7 @@ public class BalanceSheetGenerator {
     public void getBalanceSheet(List<Expense> expenses, String filePath) {
         try (FileWriter writer = new FileWriter(filePath)) {
             // Writing header
-            writer.append("Expense ID, Description, Total Amount, Participants & Owed Amount\n");
+            writer.append("Expense ID, Description, Total Amount, Split Type, Participants & Owed Amount\n");
 
             // Writing each expense record
             for (Expense expense : expenses) {
@@ -16,6 +16,8 @@ public class BalanceSheetGenerator {
                         .append(expense.getDescription())
                         .append(", ")
                         .append(String.valueOf(expense.getTotalAmount()))
+                        .append(", ")
+                        .append(String.valueOf(expense.getSplitType()))
                         .append(", ");
 
                 for (Participant participant : expense.getParticipants()) {
