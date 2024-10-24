@@ -5,9 +5,9 @@ public class Expense {
     private String description;
     private double totalAmount;
     private List<Participant> participants;
-    private ExpenseType splitType;  // Equal, Exact, Percentage
+    private SplitType splitType;  // Equal, Exact, Percentage
 
-    public Expense(String id, String description, double totalAmount, List<Participant> participants, ExpenseType spliType) {
+    public Expense(String id, String description, double totalAmount, List<Participant> participants, SplitType spliType) {
         this.id = id;
         this.description = description;
         this.totalAmount = totalAmount;
@@ -29,6 +29,10 @@ public class Expense {
 
     public List<Participant> getParticipants() {
         return participants;
+    }
+
+    public SplitType getSplitType() {
+        return splitType;
     }
 
     public void setTotalAmount(double totalAmount) {

@@ -1,4 +1,4 @@
-public enum ExpenseType {
+public enum SplitType {
     EQUAL,
     EXACT,
     PERCENTAGE

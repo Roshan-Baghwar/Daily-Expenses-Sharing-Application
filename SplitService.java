@@ -4,7 +4,26 @@ public class SplitService {
 
     private static DataValidation dataValidation = new DataValidation();
 
-    public void splitEqually(Expense expense) {
+    public void splitExpense(Expense expense, Map<User, Double> expenseMap) {
+        switch (expense.getSplitType()) {
+            case EQUAL:
+                        splitEqually(expense);
+                        break;
+
+            case EXACT:
+                        splitExact(expense, expenseMap);
+                        break;
+
+            case PERCENTAGE:
+                        splitByPercentage(expense, expenseMap);
+                        break;
+        
+            default:
+                    return;
+        }
+    }
+
+    private void splitEqually(Expense expense) {
         double splitAmount = expense.getTotalAmount() / expense.getParticipants().size();
         // System.out.println(splitAmount);
         for(Participant participant : expense.getParticipants()) {
@@ -12,7 +31,7 @@ public class SplitService {
         }
     }
 
-    public void splitExact(Expense expense, Map<User, Double> exactAmounts) {
+    private void splitExact(Expense expense, Map<User, Double> exactAmounts) {
         if(dataValidation.isInputDataForExactSplitValid(expense, exactAmounts)) {
             for(Participant participant : expense.getParticipants()) {
                 double amount = exactAmounts.get(participant.getUser());
@@ -21,7 +40,7 @@ public class SplitService {
         }
     }
 
-    public void splitByPercentage(Expense expense, Map<User, Double> percentages) {
+    private void splitByPercentage(Expense expense, Map<User, Double> percentages) {
         if(dataValidation.isInputDataForPercentageSplitValid(expense, percentages)) {
             for(Participant participant : expense.getParticipants()) {
                 double percentage = percentages.get(participant.getUser());
