@@ -8,6 +8,9 @@ public class ExpenseSharingApp {
     private static ExpenseService expenseService = new ExpenseService();
     private static SplitService splitService = new SplitService();
     private static BalanceSheet balanceSheet = new BalanceSheet();
+    private static BalanceSheetGenerator balanceSheetGenerator = new BalanceSheetGenerator();
+
+    private static final String fileName = "balance_sheet.csv";
 
     public static void main(String args[]) {
         userService.createUser("roshan.baghwar@gmail.com", "Roshan Baghwar", "9508850072");
@@ -29,6 +32,8 @@ public class ExpenseSharingApp {
         splitService.splitByPercentage(expense, expenseMap);
         balanceSheet.showIndividualExpenses(expense);
         balanceSheet.showOverallExpense(expense);
+
+        balanceSheetGenerator.getBalanceSheet(Arrays.asList(expense), fileName);
 
     }
 }
