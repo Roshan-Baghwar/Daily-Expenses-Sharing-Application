@@ -6,6 +6,7 @@ import java.util.HashMap;
 public class ExpenseSharingApp {
     private static UserService userService = new UserService();
     private static ExpenseService expenseService = new ExpenseService();
+    private static SplitService splitService = new SplitService();
 
     private static void displayUserExpense(User user, List<Expense> userExpenses) {
         for(Expense expense : userExpenses) {
@@ -25,11 +26,11 @@ public class ExpenseSharingApp {
         List<Participant> participants = Arrays.asList(participant1, participant2);
 
         Expense expense = new Expense("1", "Dinner", 2000, participants, ExpenseType.PERCENTAGE);
-        expenseService.addExpense(expense);
+        expenseService.addExpense(expense); 
         Map<User, Double> p = new HashMap<>();
         p.put(user1, 33.57);
         p.put(user2, 67.0);
-        expenseService.splitByPercentage(expense, p);
+        splitService.splitByPercentage(expense, p);
 
         List<Expense> userExpenses1 = expenseService.getExpensesForUser(user1);
         displayUserExpense(user1, userExpenses1);
