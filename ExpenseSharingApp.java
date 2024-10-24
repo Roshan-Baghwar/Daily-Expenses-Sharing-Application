@@ -27,10 +27,10 @@ public class ExpenseSharingApp {
 
         Expense expense = new Expense("1", "Dinner", 2000, participants, ExpenseType.PERCENTAGE);
         expenseService.addExpense(expense); 
-        Map<User, Double> p = new HashMap<>();
-        p.put(user1, 33.57);
-        p.put(user2, 67.0);
-        splitService.splitByPercentage(expense, p);
+        Map<User, Double> expenseMap = new HashMap<>();
+        expenseMap.put(user1, 50.0);
+        expenseMap.put(user2, 200.0);
+        splitService.splitByPercentage(expense, expenseMap);
 
         List<Expense> userExpenses1 = expenseService.getExpensesForUser(user1);
         displayUserExpense(user1, userExpenses1);
