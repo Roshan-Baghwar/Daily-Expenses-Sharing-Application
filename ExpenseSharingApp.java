@@ -7,12 +7,7 @@ public class ExpenseSharingApp {
     private static UserService userService = new UserService();
     private static ExpenseService expenseService = new ExpenseService();
     private static SplitService splitService = new SplitService();
-
-    private static void displayUserExpense(User user, List<Expense> userExpenses) {
-        for(Expense expense : userExpenses) {
-            System.out.println(user.getName() + " owes amount " + expense.getTotalAmount());
-        }
-    }
+    private static BalanceSheet balanceSheet = new BalanceSheet();
 
     public static void main(String args[]) {
         userService.createUser("roshan.baghwar@gmail.com", "Roshan Baghwar", "9508850072");
@@ -28,14 +23,12 @@ public class ExpenseSharingApp {
         Expense expense = new Expense("1", "Dinner", 2000, participants, ExpenseType.PERCENTAGE);
         expenseService.addExpense(expense); 
         Map<User, Double> expenseMap = new HashMap<>();
-        expenseMap.put(user1, 50.0);
-        expenseMap.put(user2, 200.0);
+        expenseMap.put(user1, 75.0);
+        expenseMap.put(user2, 25.0);
+
         splitService.splitByPercentage(expense, expenseMap);
+        balanceSheet.showIndividualExpenses(expense);
+        balanceSheet.showOverallExpense(expense);
 
-        List<Expense> userExpenses1 = expenseService.getExpensesForUser(user1);
-        displayUserExpense(user1, userExpenses1);
-
-        List<Expense> userExpenses2 = expenseService.getExpensesForUser(user2);
-        displayUserExpense(user2, userExpenses2);
     }
 }

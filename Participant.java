@@ -24,4 +24,8 @@ public class Participant {
     public void setAmountOwed(double amountOwed) {
         this.amountOwed = amountOwed;
     }
+
+    public void setPercentageOwed(double percentageOwed) {
+        this.percentageOwed = percentageOwed;
+    }
 }

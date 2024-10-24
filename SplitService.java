@@ -27,6 +27,7 @@ public class SplitService {
                 double percentage = percentages.get(participant.getUser());
                 double amount = (percentage / 100) * expense.getTotalAmount();
                 participant.setAmountOwed(amount);
+                participant.setPercentageOwed(percentage);
             }
         }
     }

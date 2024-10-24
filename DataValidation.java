@@ -26,7 +26,7 @@ public class DataValidation {
 
         if(totalPercentage != 100.0) {
             System.out.println("Total Expense Share: 100.0%");
-            System.out.println("Sum of Percentage Share per User: " + totalPercentage+" daf");
+            System.out.println("Sum of Percentage Share per User: " + totalPercentage + "%");
             throw new IllegalArgumentException("Sum of Percentage-Split per User is not equal to 100.0%!"); 
         }
 
